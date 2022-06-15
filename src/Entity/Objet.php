@@ -28,12 +28,12 @@ class Objet
     private $is_available;
 
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'objets')]
-    private $categorie_id;
+    private $categorie;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'objets')]
-    private $owner_id;
+    private $owner;
 
-    #[ORM\OneToMany(mappedBy: 'objet_id', targetEntity: Reservation::class)]
+    #[ORM\OneToMany(mappedBy: 'objet', targetEntity: Reservation::class)]
     private $reservations;
 
     public function __construct()
@@ -94,26 +94,26 @@ class Objet
         return $this;
     }
 
-    public function getCategorieId(): ?Category
+    public function getCategorie(): ?Category
     {
-        return $this->categorie_id;
+        return $this->categorie;
     }
 
-    public function setCategorieId(?Category $categorie_id): self
+    public function setCategorie(?Category $categorie): self
     {
-        $this->categorie_id = $categorie_id;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
-    public function getOwnerId(): ?User
+    public function getOwner(): ?User
     {
-        return $this->owner_id;
+        return $this->owner;
     }
 
-    public function setOwnerId(?User $owner_id): self
+    public function setOwner(?User $owner): self
     {
-        $this->owner_id = $owner_id;
+        $this->owner = $owner;
 
         return $this;
     }
@@ -130,7 +130,7 @@ class Objet
     {
         if (!$this->reservations->contains($reservation)) {
             $this->reservations[] = $reservation;
-            $reservation->setObjetId($this);
+            $reservation->setObjet($this);
         }
 
         return $this;
@@ -140,8 +140,8 @@ class Objet
     {
         if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($reservation->getObjetId() === $this) {
-                $reservation->setObjetId(null);
+            if ($reservation->getObjet() === $this) {
+                $reservation->setObjet(null);
             }
         }
 
