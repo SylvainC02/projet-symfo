@@ -24,12 +24,13 @@ class ObjetCrudController extends AbstractCrudController
             TextField::new('name'),
             TextEditorField::new('description'),
             ImageField::new('image')
-                ->setBasePath('assets/images')
-                ->setUploadDir('public/assets/images')
+                ->setBasePath('assets/images/')
+                ->setUploadDir('public/assets/images/')
                 ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]'),
             BooleanField::new('is_available'),
             AssociationField::new('categorie'),
-            AssociationField::new('owner'),
+            AssociationField::new('owner')
+
         ];
     }
 }
