@@ -1,0 +1,40 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>557</x><y>0</y><w>210</w><h>140</h></coordinates><panel_attributes>user
+--
+id
+mail
+mdp
+pseudo
+adresse
+points totaux
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>557</x><y>310</y><w>210</w><h>90</h></coordinates><panel_attributes>categorie
+--
+id
+nom
+points donné</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>37</x><y>250</y><w>210</w><h>140</h></coordinates><panel_attributes>Objet
+--
+id
+nom
+image
+description
+is_available
+categorie_id
+owner_id
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>237</x><y>340</y><w>340</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes><additional_attributes>10;20;320;20</additional_attributes></element><element><id>Relation</id><coordinates><x>127</x><y>120</y><w>50</w><h>150</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..n
+</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>37</x><y>0</y><w>210</w><h>130</h></coordinates><panel_attributes>réservation
+--
+date debut
+date fin
+objet_id
+borrower_id</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>237</x><y>50</y><w>340</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes><additional_attributes>10;20;320;20</additional_attributes></element><element><id>Relation</id><coordinates><x>237</x><y>130</y><w>450</w><h>210</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=1
+</panel_attributes><additional_attributes>10;190;430;10</additional_attributes></element></diagram>
