@@ -5,13 +5,13 @@
 
 {% block body %}
 
-	{{form_start(form)}}
 
-	{{form_row(form.starting_date)}}
-	{{form_row(form.ending_date)}}
+	{{ form_start(form) }}
 
+	{{ form_row(form.starting_date) }}
+	{{ form_row(form.ending_date) }}
 
-	<button type="submit">Reserver</button>
-	{{form_end(form)}}
+	<button type="submit">Register!</button>
+	{{ form_end(form) }}
 
 {% endblock %}

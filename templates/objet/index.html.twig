@@ -1,33 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les articles
-{% endblock %}
-
 {% block body %}
-	<div class="container">
-		<div class="row">
-			{% for objet in listObjets %}
-				<div class="col col-md-3 col-lg-2">
-					<div class="card" style="width: 18rem;">
-						<img src=" {{asset('assets/images/' ~ objet.image)}} " class="card-img-top" alt="{{objet.name}}">
-						<div class="card-body">
-							<h5 class="card-title">
-								{{objet.name}}
-							</h5>
-							<p class="card-text">
-								{{objet.description|raw}}
-							</p>
 
-							<a href=" {{path('app_single_objet', {id:objet.id})}} " class="btn btn-primary">Voir en détail</a>
-							{% if objet.isAvailable %}
-								<span class="bg-success">
-									Disponible
-								</span>
-							{% endif %}
-						</div>
+	<h1>Tous les objets</h1>
+
+	<div class="container">
+
+		<div class="row">
+
+			{% for objet in objets %}
+
+				<div class="card" style="width: 18rem;">
+					<img src="{{asset('assets/images/')}}{{objet.image}}" class="card-img-top" alt="{{objet.image}}">
+
+					<div class="card-body">
+						<h5 class="card-title">{{ objet.name }}</h5>
+						<p class="card-text">{{ objet.description|raw}}</p>
+					</div>
+
+					<ul class="list-group list-group-flush">
+
+						<li class="list-group-item">
+							<a href="{{path('single_home', {id: objet.categorie.id })}}">{{objet.categorie}}</a>
+						</li>
+
+					</ul>
+
+					<div class="card-body">
+						<a href="{{ path('objet', {'id': objet.id}) }}" class="card-link">Voir l'objet</a>
 					</div>
 				</div>
+
 			{% endfor %}
+
 		</div>
+
 	</div>
 {% endblock %}

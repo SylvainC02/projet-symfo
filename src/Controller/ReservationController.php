@@ -5,22 +5,22 @@ namespace App\Controller;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\ObjetRepository;
+use App\Repository\ReservationRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class ReservationController extends AbstractController
 {
     #[Route('/reservation/{id}', name: 'app_reservation')]
-    public function index(Request $request, ObjetRepository $objetRepository, ManagerRegistry $managerRegistry, $id): Response
+    public function index(Request $request, $id, ObjetRepository $objetRepository, ManagerRegistry $managerRegistry): Response
     {
         $reservation = new Reservation();
         $objet = $objetRepository->find($id);
         $user = $this->getUser();
-
-        $form = $this->createForm(ReservationType::class, $reservation);
+        $form = $this->createform(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -13,8 +13,12 @@ class ReservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('starting_date', DateType::class)
-            ->add('ending_date', DateType::class);
+            ->add('starting_date', DateType::class, [
+                'years' => ['2022', '2023', '2024']
+            ])
+            ->add('ending_date', DateType::class, [
+                'years' => ['2022', '2023', '2024']
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

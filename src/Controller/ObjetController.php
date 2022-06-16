@@ -12,22 +12,19 @@ class ObjetController extends AbstractController
     #[Route('/objet', name: 'app_objet')]
     public function index(ObjetRepository $objetRepository): Response
     {
-        $listObjet = $objetRepository->findAll();
-
+        $objets = $objetRepository->findAll();
         return $this->render('objet/index.html.twig', [
-            "listObjets" => $listObjet
+            'objets' => $objets
         ]);
     }
 
-    #[Route('/objet/{id}', name: 'app_single_objet')]
-    public function show(ObjetRepository $objetRepository, $id): Response
+    #[Route('/objet/{id}', name: 'objet')]
+    public function single(ObjetRepository $objetRepository, $id): Response
     {
-        $objet = $objetRepository->findOneBy([
-            'id' => $id
-        ]);
-
+        $objet = $objetRepository->find($id);
         return $this->render('objet/single.html.twig', [
-            "objet" => $objet
+            'objet' => $objet
+
         ]);
     }
 }

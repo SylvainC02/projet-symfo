@@ -20,7 +20,7 @@ class ReservationCrudController extends AbstractCrudController
             AssociationField::new('objet'),
             AssociationField::new('borrower'),
             DateField::new('starting_date'),
-            DateField::new('ending_date'),
+            DateField::new('ending_date')
         ];
     }
 }
