@@ -26,15 +26,19 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $reservation->setObjet($objet);
             $reservation->setBorrower($user);
+
             $objet->setIsAvailable(false);
+
             $entityManager = $managerRegistry->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
-            $this->addFlash('success', 'Votre réservation a bien été confirmée !');
+
+            $this->addFlash('success', 'Reservation faite !');
             return $this->redirectToRoute('app_home');
         }
+
         return $this->renderForm('reservation/index.html.twig', [
-            "form" => $form
+            'form' => $form,
         ]);
     }
 }

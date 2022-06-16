@@ -14,7 +14,6 @@ class ReservationCrudController extends AbstractCrudController
         return Reservation::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [
