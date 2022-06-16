@@ -44,12 +44,7 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-<<<<<<< HEAD
-            ])
-        ;
-=======
             ]);
->>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
     }
 
     public function configureOptions(OptionsResolver $resolver): void

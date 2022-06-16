@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+{{form_start(form)}}
+
+	{{ form_row(form.starting_date) }}
+	{{ form_row(form.ending_date) }}
+
+
+
+<button type="submit" class= "btn btn-primary">Register</button>
+
+{{form_end(form)}}
+
+{% endblock %}
