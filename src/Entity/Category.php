@@ -21,7 +21,11 @@ class Category
     #[ORM\Column(type: 'integer')]
     private $given_points;
 
+<<<<<<< HEAD
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Objet::class)]
+=======
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Objet::class)]
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
     private $objets;
 
     public function __construct()
@@ -70,7 +74,11 @@ class Category
     {
         if (!$this->objets->contains($objet)) {
             $this->objets[] = $objet;
+<<<<<<< HEAD
             $objet->setCategory($this);
+=======
+            $objet->setCategorie($this);
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
         }
 
         return $this;
@@ -80,15 +88,28 @@ class Category
     {
         if ($this->objets->removeElement($objet)) {
             // set the owning side to null (unless already changed)
+<<<<<<< HEAD
             if ($objet->getCategory() === $this) {
                 $objet->setCategory(null);
+=======
+            if ($objet->getCategorie() === $this) {
+                $objet->setCategorie(null);
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
             }
         }
 
         return $this;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
     public function __toString()
     {
         return $this->name;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067

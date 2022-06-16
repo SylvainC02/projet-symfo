@@ -22,11 +22,26 @@ security:
                 login_path: app_login
                 check_path: app_login
 
+<<<<<<< HEAD
                 enable_csrf: true
 
 
             logout:
                 path: app_logout
+=======
+            form_login:
+                # "login" is the name of the route created previously
+                login_path: app_login
+                check_path: app_login
+
+                enable_csrf: true
+
+                
+            logout:
+                path: app_logout
+
+
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -36,7 +51,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+<<<<<<< HEAD
          - { path: ^/admin, roles: ROLE_ADMIN }
+=======
+        - { path: ^/admin, roles: ROLE_ADMIN }
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

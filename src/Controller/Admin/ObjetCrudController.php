@@ -17,6 +17,7 @@ class ObjetCrudController extends AbstractCrudController
         return Objet::class;
     }
 
+<<<<<<< HEAD
     
     public function configureFields(string $pageName): iterable
     {
@@ -34,4 +35,22 @@ class ObjetCrudController extends AbstractCrudController
         ];
     }
     
+=======
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            TextField::new('name'),
+            TextEditorField::new('description'),
+            ImageField::new('image')
+                ->setBasePath('assets/images/')
+                ->setUploadDir('public/assets/images/')
+                ->setUploadedFileNamePattern('[slug]-[contenthash].[extension]'),
+            BooleanField::new('is_available'),
+            AssociationField::new('categorie'),
+            AssociationField::new('owner')
+
+        ];
+    }
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
 }

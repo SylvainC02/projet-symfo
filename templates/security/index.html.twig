@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 {% block title %}Hello SecurityController!{% endblock %}
 
 {% block body %}
@@ -17,4 +18,41 @@
         <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/projet-symfo/templates/security/index.html.twig'|file_link(0) }}">templates/security/index.html.twig</a></code></li>
     </ul>
 </div>
+=======
+{% block title %}Hello SecurityController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<h1>Hello
+			{{ controller_name }}! ✅</h1>
+
+		This friendly message is coming from:
+		<ul>
+			<li>Your controller at
+				<code>
+					<a href="{{ 'C:/xampp/htdocs/projet-symfo/src/Controller/SecurityController.php'|file_link(0) }}">src/Controller/SecurityController.php</a>
+				</code>
+			</li>
+			<li>Your template at
+				<code>
+					<a href="{{ 'C:/xampp/htdocs/projet-symfo/templates/security/index.html.twig'|file_link(0) }}">templates/security/index.html.twig</a>
+				</code>
+			</li>
+		</ul>
+	</div>
+>>>>>>> 8a1df17a15f9ea6366a4b127000b39ba9f93c067
 {% endblock %}
