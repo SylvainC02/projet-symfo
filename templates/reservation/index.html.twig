@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReservationController!
+{% endblock %}
+
+{% block body %}
+
+	{{form_start(form)}}
+
+	{{form_row(form.starting_date)}}
+	{{form_row(form.ending_date)}}
+
+
+	<button type="submit">Reserver</button>
+	{{form_end(form)}}
+
+{% endblock %}
