@@ -20,10 +20,10 @@ class Reservation
     private $ending_date;
 
     #[ORM\ManyToOne(targetEntity: Objet::class, inversedBy: 'reservations')]
-    private $objet_id;
+    private $objet;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'reservations')]
-    private $borrower_id;
+    private $borrower;
 
     public function getId(): ?int
     {
@@ -54,26 +54,26 @@ class Reservation
         return $this;
     }
 
-    public function getObjetId(): ?Objet
+    public function getObjet(): ?Objet
     {
-        return $this->objet_id;
+        return $this->objet;
     }
 
-    public function setObjetId(?Objet $objet_id): self
+    public function setObjet(?Objet $objet): self
     {
-        $this->objet_id = $objet_id;
+        $this->objet = $objet;
 
         return $this;
     }
 
-    public function getBorrowerId(): ?User
+    public function getBorrower(): ?User
     {
-        return $this->borrower_id;
+        return $this->borrower;
     }
 
-    public function setBorrowerId(?User $borrower_id): self
+    public function setBorrower(?User $borrower): self
     {
-        $this->borrower_id = $borrower_id;
+        $this->borrower = $borrower;
 
         return $this;
     }

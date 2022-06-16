@@ -21,7 +21,7 @@ class Category
     #[ORM\Column(type: 'integer')]
     private $given_points;
 
-    #[ORM\OneToMany(mappedBy: 'categorie_id', targetEntity: Objet::class)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Objet::class)]
     private $objets;
 
     public function __construct()
@@ -70,7 +70,7 @@ class Category
     {
         if (!$this->objets->contains($objet)) {
             $this->objets[] = $objet;
-            $objet->setCategorieId($this);
+            $objet->setCategory($this);
         }
 
         return $this;
@@ -80,11 +80,15 @@ class Category
     {
         if ($this->objets->removeElement($objet)) {
             // set the owning side to null (unless already changed)
-            if ($objet->getCategorieId() === $this) {
-                $objet->setCategorieId(null);
+            if ($objet->getCategory() === $this) {
+                $objet->setCategory(null);
             }
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->name;
     }
 }
