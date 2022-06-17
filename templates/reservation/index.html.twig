@@ -15,3 +15,73 @@
 	{{ form_end(form) }}
 
 {% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(document).ready(function () {
+$.fn.datepicker.dates['fr'] = {
+days: [
+"dimanche",
+"lundi",
+"mardi",
+"mercredi",
+"jeudi",
+"vendredi",
+"samedi"
+],
+daysShort: [
+"dim.",
+"lun.",
+"mar.",
+"mer.",
+"jeu.",
+"ven.",
+"sam."
+],
+daysMin: [
+"d",
+"l",
+"ma",
+"me",
+"j",
+"v",
+"s"
+],
+months: [
+"janvier",
+"février",
+"mars",
+"avril",
+"mai",
+"juin",
+"juillet",
+"août",
+"septembre",
+"octobre",
+"novembre",
+"décembre"
+],
+monthsShort: [
+"janv.",
+"févr.",
+"mars",
+"avril",
+"mai",
+"juin",
+"juil.",
+"août",
+"sept.",
+"oct.",
+"nov.",
+"déc."
+],
+today: "Aujourd'hui",
+monthsTitle: "Mois",
+clear: "Effacer",
+weekStart: 1
+};
+$('.js-datepicker').datepicker({format: 'yyyy-mm-dd', startDate: '-0d', language: 'fr'});
+$('.js-datepicker2').datepicker({format: 'yyyy-mm-dd', startDate: '+1d', language: 'fr'});
+});
+	</script>
+{% endblock %}

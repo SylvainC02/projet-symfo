@@ -21,7 +21,10 @@
 				</ul>
 
 			</div>
-			<a href="{{path('app_reservation', {id: objet.id})}}">Reserver</a>
+			{% if app.user and objet.isAvailable %}
+				<a href="{{path('app_reservation', {id: objet.id})}}">Reserver</a>
+			{% endif %}
+
 		</div>
 	</div>
 {% endblock %}
