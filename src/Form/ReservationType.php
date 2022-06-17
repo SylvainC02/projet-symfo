@@ -14,10 +14,17 @@ class ReservationType extends AbstractType
     {
         $builder
             ->add('starting_date', DateType::class, [
-                'years' => ['2022', '2023', '2024']
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker'],
+                'label' => "Date de début"
+
             ])
             ->add('ending_date', DateType::class, [
-                'years' => ['2022', '2023', '2024']
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker2'],
+                'label' => "Date de fin"
             ]);
     }
 
