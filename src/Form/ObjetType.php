@@ -16,13 +16,13 @@ class ObjetType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom : '
             ])
             ->add('image', FileType::class, [
-                'label' => 'Image'
+                'label' => 'Image : '
             ])
             ->add('description', TextareaType::class, [
-                'label' => "Description"
+                "label" => 'Description : '
             ])
             ->add('categorie');
     }
