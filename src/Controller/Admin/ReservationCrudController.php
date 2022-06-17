@@ -14,6 +14,7 @@ class ReservationCrudController extends AbstractCrudController
         return Reservation::class;
     }
 
+<<<<<<< HEAD
     
     public function configureFields(string $pageName): iterable
     {
@@ -26,4 +27,15 @@ class ReservationCrudController extends AbstractCrudController
         ];
     }
     
+=======
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            AssociationField::new('objet'),
+            AssociationField::new('borrower'),
+            DateField::new('starting_date'),
+            DateField::new('ending_date')
+        ];
+    }
+>>>>>>> 7fbbe1eab58f3aada36c7945795b715a13da3af8
 }

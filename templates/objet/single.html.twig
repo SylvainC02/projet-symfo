@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 {% block title %} <article></article>{% endblock %}
 
@@ -21,4 +22,32 @@
         
     </div>
 </div>
+=======
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="card" style="width: 18rem;">
+				<img src="{{asset('assets/images/')}}{{objet.image}}" class="card-img-top" alt="{{objet.image}}">
+
+				<div class="card-body">
+					<h5 class="card-title">{{ objet.name }}</h5>
+					<p class="card-text">{{ objet.description|raw}}</p>
+				</div>
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						<a href="{{path('single_home', {id: objet.categorie.id})}}">{{objet.categorie}}</a>
+					</li>
+				</ul>
+
+			</div>
+			<a href="{{path('app_reservation', {id: objet.id})}}">Reserver</a>
+		</div>
+	</div>
+>>>>>>> 7fbbe1eab58f3aada36c7945795b715a13da3af8
 {% endblock %}

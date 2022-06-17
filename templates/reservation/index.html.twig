@@ -1,18 +1,33 @@
 {% extends 'base.html.twig' %}
 
+<<<<<<< HEAD
 
 
 {% block body %}
 
 {{form_start(form)}}
+=======
+{% block title %}Hello ReservationController!
+{% endblock %}
+
+{% block body %}
+
+
+	{{ form_start(form) }}
+>>>>>>> 7fbbe1eab58f3aada36c7945795b715a13da3af8
 
 	{{ form_row(form.starting_date) }}
 	{{ form_row(form.ending_date) }}
 
+<<<<<<< HEAD
 
 
 <button type="submit" class= "btn btn-primary">Register</button>
 
 {{form_end(form)}}
+=======
+	<button type="submit">Register!</button>
+	{{ form_end(form) }}
+>>>>>>> 7fbbe1eab58f3aada36c7945795b715a13da3af8
 
 {% endblock %}
