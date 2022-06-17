@@ -4,18 +4,9 @@
 {% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
-        {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message}}
-        </div>
-        {% endfor %}
-	
-=======
 	{% for message in app.flashes('success') %}
 		<div class="alert alert-success">
 			{{ message }}
 		</div>
 	{% endfor %}
->>>>>>> 7fbbe1eab58f3aada36c7945795b715a13da3af8
 {% endblock %}

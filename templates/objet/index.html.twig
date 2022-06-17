@@ -1,28 +1,5 @@
 {% extends 'base.html.twig' %}
 
-<<<<<<< HEAD
-{% block title %}Liste des Articles!{% endblock %}
-
-{% block body %}
-<div class="container ">
-    <h1>Liste des Articles</h1>
-    <div class="row">
-        {% for objet in objetList %}
-            <div class="card" style="width: 18rem;">
-               <img src="assets/images/{{ objet.image }}" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">{{objet.name}}</h5>
-                <ul>
-                <li class= "list-group-item"><a href="{{path('app_show_objet', {id: objet.categorie.id})}}">{{objet.categorie}}</a></li>
-                </ul>
-                <a href="{{path('app_show_objet', {id:objet.id}) }}" class="btn btn-primary">Louez moi</a>
-              </div>
-           </div>
-            
-        {% endfor %}
-    </div>
-</div>
-=======
 {% block body %}
 
 	<h1>Tous les objets</h1>
@@ -59,5 +36,4 @@
 		</div>
 
 	</div>
->>>>>>> 7fbbe1eab58f3aada36c7945795b715a13da3af8
 {% endblock %}

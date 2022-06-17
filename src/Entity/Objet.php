@@ -152,8 +152,4 @@ class Objet
     {
         return $this->name;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 7fbbe1eab58f3aada36c7945795b715a13da3af8
 }
