@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReservationController!
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="{{asset('assets/style.css')}}">
 {% endblock %}
 
 {% block body %}
@@ -17,6 +20,89 @@
 
 {{form_end(form)}}
 
+<<<<<<< HEAD
+=======
+
+	<button type="submit">Register!</button>
+	{{ form_end(form) }}
+>>>>>>> 0caf76c08840237ec0239e8a706ec418722a2d77
+
+
+	{% block javascripts %}
+		{{parent()}}
+		<script>
+			;
+(function ($) {
+$.fn.datepicker.dates['fr'] = {
+days: [
+"dimanche",
+"lundi",
+"mardi",
+"mercredi",
+"jeudi",
+"vendredi",
+"samedi"
+],
+daysShort: [
+"dim.",
+"lun.",
+"mar.",
+"mer.",
+"jeu.",
+"ven.",
+"sam."
+],
+daysMin: [
+"d",
+"l",
+"ma",
+"me",
+"j",
+"v",
+"s"
+],
+months: [
+"janvier",
+"février",
+"mars",
+"avril",
+"mai",
+"juin",
+"juillet",
+"août",
+"septembre",
+"octobre",
+"novembre",
+"décembre"
+],
+monthsShort: [
+"janv.",
+"févr.",
+"mars",
+"avril",
+"mai",
+"juin",
+"juil.",
+"août",
+"sept.",
+"oct.",
+"nov.",
+"déc."
+],
+today: "Aujourd'hui",
+monthsTitle: "Mois",
+clear: "Effacer",
+weekStart: 1
+};
+}(jQuery));
+
+$(document).ready(function () { // you may need to change this code if you are not using Bootstrap Datepicker
+$('.js-datepicker').datepicker({format: 'yyyy-mm-dd', startDate: "-0d", language: "fr"});
+
+$('.js-datepicker2').datepicker({format: 'yyyy-mm-dd', startDate: "+1d", language: "fr"});
+});
+		</script>
+	{% endblock %}
 
 {% endblock %}
 {% block javascripts %}

@@ -21,6 +21,7 @@
 				</ul>
 
 			</div>
+<<<<<<< HEAD
 			
 			{% if  app.user and objet.isAvailable  %}
 			<a href="{{path('app_reservation', {id: objet.id})}}">Reserver</a>
@@ -28,6 +29,12 @@
 			{% endif %}
 			
 		
+=======
+			{% if app.user and objet.isAvailable %}
+				<a href="{{path('app_reservation', {id: objet.id})}}">Reserver</a>
+			{% endif %}
+
+>>>>>>> 0caf76c08840237ec0239e8a706ec418722a2d77
 		</div>
 	</div>
 {% endblock %}
