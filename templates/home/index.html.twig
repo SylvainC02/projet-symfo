@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
-{% endblock %}
 
 {% block body %}
 	{% for message in app.flashes('success') %}
@@ -9,4 +7,34 @@
 			{{ message }}
 		</div>
 	{% endfor %}
+<div class="container-fluid ">
+
+	<div class="text-center">
+		<h1>MyLoc</h1>
+		<h2>Qu'est-ce que c'est ?</h2>
+		<p>Louez des centaines d'objet gratuitement entre particuliers.</p>
+		<p>Mettez vos objets a disposition.</p>
+		<p>Accumluez des points selon vos objets afin d'obtenir des réductions sur des dizaines de magasins.</p>
+
+	</div>
+
+<div class="container">
+	<div class="row">
+		<h1>Catégories :</h1>
+			{% for categorie in categories %}
+
+			<div class="col-3">
+			
+				<a href="{{path('single_home', {id: categorie.id})}}">
+				<div class="card text-center h-100">
+				<div class="card-header">{{categorie.name|upper}}</div>
+  					<img class="card-img" src="{{asset('assets/images/')}}{{categorie.image}}" alt="Card-categorie">
+				</div>
+				</a>
+			</div>
+		
+			{% endfor %}
+	</div>
+</div>
+</div>
 {% endblock %}

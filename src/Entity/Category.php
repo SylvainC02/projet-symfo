@@ -24,6 +24,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Objet::class)]
     private $objets;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $image;
+
     public function __construct()
     {
         $this->objets = new ArrayCollection();
@@ -90,5 +93,17 @@ class Category
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

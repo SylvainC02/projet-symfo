@@ -17,9 +17,7 @@ class UserController extends AbstractController
     public function index(): Response
     {
 
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
+        return $this->render('user/index.html.twig', []);
     }
 
     #[Route('/user/addObject/', name: 'app_add_item')]
@@ -36,10 +34,10 @@ class UserController extends AbstractController
             $objet->setOwner($user);
             $objet->setIsAvailable(true);
 
-            $directory = '../public/assets/images/';
+            $directory = 'assets/images/';
 
             $file = $form['image']->getData();
-            dd($file);
+
             $file->move($directory, $file->getClientOriginalName());
 
             $entityManager = $managerRegistry->getManager();
