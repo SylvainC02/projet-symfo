@@ -1,18 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends 'user/index.html.twig' %}
+
+{% block accountTitle %}
+<h2 class="m-2 text-center">Ajouter un objet</h2>
+{% endblock %}
+
+{% block utility %}
+
+<div class="container">
+	<div>
+		{{ form_start(form) }}
+
+		{{ form_row(form.name)}}
+		{{ form_row(form.image)}}
+		{{ form_row(form.description)}}
+		{{ form_row(form.categorie)}}
 
 
-{% block body %}
-
-
-	{{ form_start(form) }}
-
-	{{ form_row(form.name)}}
-	{{ form_row(form.image)}}
-	{{ form_row(form.description)}}
-	{{ form_row(form.categorie)}}
-
-
-	<button type="submit" class="btn">Register</button>
-	{{ form_end(form) }}
+		<button type="submit" class="btn btn-primary">Ajouter</button>
+		{{ form_end(form) }}
+	</div>
+</div>
 
 {% endblock %}
+

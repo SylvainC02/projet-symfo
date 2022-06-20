@@ -17,9 +17,7 @@ class UserController extends AbstractController
     public function index(): Response
     {
 
-        return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
+        return $this->render('user/index.html.twig', []);
     }
 
     #[Route('/user/addObject/', name: 'app_add_item')]
