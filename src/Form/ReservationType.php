@@ -27,19 +27,7 @@ class ReservationType extends AbstractType
                 'label' => "Date de fin"
             ]);
     }
-
-            ->add('ending_date', DateType::class, [
-                
-                'widget' => 'single_text',
-                'html5' => false,
-                'attr'=> ['class'=>'js-datepicker2'],
-                'label'=> "Date de fin"
-            
-                
-                
-            ]);
     
-        }
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
