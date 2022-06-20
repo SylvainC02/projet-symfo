@@ -34,10 +34,10 @@ class UserController extends AbstractController
             $objet->setOwner($user);
             $objet->setIsAvailable(true);
 
-            $directory = '../public/assets/images/';
+            $directory = 'assets/images/';
 
             $file = $form['image']->getData();
-            dd($file);
+
             $file->move($directory, $file->getClientOriginalName());
 
             $entityManager = $managerRegistry->getManager();
