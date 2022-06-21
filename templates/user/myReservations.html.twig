@@ -1,0 +1,41 @@
+{% extends 'user/index.html.twig' %}
+
+{% block accountTitle %}
+<h2 class="m-2 text-center">Mes Reservations.</h2>
+{% endblock %}
+
+{% block utility %}
+  	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	 {% endfor %}
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date de depart</th>
+      <th scope="col">Date de Fin</th>
+      <th scope="col">objet</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for reservation in reservations %}
+    
+    <tr>
+      <td> {{reservation.startingDate|date('d/m/Y')}} </td>
+      <td>{{reservation.endingDate|date('d/m/Y')}} </td>
+      <td>{{reservation.objet}}</td>
+      <td>
+        
+        <a onclick="return confirm('Etes-vous sûre de vouloir supprimer cette reservation ?')" href=" {{path('app_delete_reservation', {'id': reservation.id})}} "><i class="bi bi-trash"></i></a> 
+        
+      
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

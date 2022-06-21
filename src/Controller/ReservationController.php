@@ -19,6 +19,8 @@ class ReservationController extends AbstractController
     {
         $reservation = new Reservation();
         $objet = $objetRepository->find($id);
+        $cat = $objet->getCategorie();
+        $points = $cat->getGivenPoints();
         $user = $this->getUser();
         $form = $this->createform(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -26,15 +28,24 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $reservation->setObjet($objet);
             $reservation->setBorrower($user);
+            $reservationDateDebut= $reservation->getStartingDate();
+            $reservationDateFin= $reservation->getEndingDate();
+            if($reservationDateDebut > $reservationDateFin){
+                $this->addFlash('error', 'La saisie n\'est pas la bonne' );
+                return $this-> redirectToRoute('app_reservation',['id'=>$id]);
+            } else{
 
-            $objet->setIsAvailable(false);
+                $objet->setIsAvailable(false);
+                $user->setTotalPoints($user->getTotalPoints() + $points);
+    
+                $entityManager = $managerRegistry->getManager();
+                $entityManager->persist($reservation);
+                $entityManager->flush();
+    
+                $this->addFlash('success', 'Reservation faite !');
+                return $this->redirectToRoute('app_home');
+            }
 
-            $entityManager = $managerRegistry->getManager();
-            $entityManager->persist($reservation);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Reservation faite !');
-            return $this->redirectToRoute('app_home');
         }
 
         return $this->renderForm('reservation/index.html.twig', [
