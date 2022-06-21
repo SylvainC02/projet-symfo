@@ -1,3 +1,8 @@
 .datepicker>div {
     display: block;
 }
+
+.myObjectsImg {
+    height: 50px;
+    width: 50px;
+}

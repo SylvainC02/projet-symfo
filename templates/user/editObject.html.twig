@@ -1,0 +1,25 @@
+{% extends 'user/index.html.twig' %}
+
+{% block accountTitle %}
+	<h2 class="m-2 text-center">Modification de l'objet
+		{{objet.name}}</h2>
+{% endblock %}
+
+{% block utility %}
+
+	<div class="container">
+		<div>
+			{{ form_start(form) }}
+
+			{{ form_row(form.name)}}
+			{{ form_row(form.image)}}
+			{{ form_row(form.description)}}
+			{{ form_row(form.categorie)}}
+
+
+			<button type="submit" class="btn btn-primary">Modifier</button>
+			{{ form_end(form) }}
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'user/index.html.twig' %}
+
+{% block accountTitle %}
+	<h2 class="m-2 text-center">Mes objets</h2>
+{% endblock %}
+
+{% block utility %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<div class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Nom</th>
+					<th scope="col">Image</th>
+					<th scope="col">Description</th>
+					<th scope="col">Disponibilité</th>
+					<th scope="col">Catégorie</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for objet in objets %}
+					<tr>
+						<td>
+							{{objet.name}}
+						</td>
+						<td>
+							<img class="myObjectsImg" src=" {{asset('assets/images/')}}{{objet.image}} " alt=" {{objet.name}} ">
+						</td>
+						<td>
+							{{objet.description|raw}}
+						</td>
+						<td class="py-3">
+							{% if objet.isAvailable %}
+								<span class="text-bg-success p-2">Disponible</span>
+							{% else %}
+								<span class="text-bg-danger p-2">Indisponible</span>
+							{% endif %}
+						</td>
+						<td>
+							{{objet.categorie.name}}
+						</td>
+						<td>
+							<a href=" {{path('objet', {'id':objet.id})}} ">
+								<i class="bi bi-eye"></i>
+							</a>
+							-
+							<a href=" {{path('edit_my_item', {'id':objet.id})}} ">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+							-
+							<a href=" {{path('del_my_item', {'id': objet.id})}} " onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet objet ?')">
+								<i class="bi bi-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

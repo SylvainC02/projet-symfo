@@ -7,22 +7,20 @@
 {% endblock %}
 
 {% block body %}
-
-
+	{% for message in app.flashes('error') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
 	{{ form_start(form) }}
 
 	{{ form_row(form.starting_date) }}
 	{{ form_row(form.ending_date) }}
-    
 
 
-<button type="submit" class= "btn btn-primary">Register</button>
+	<button type="submit" class="btn btn-primary">Register</button>
 
-{{form_end(form)}}
-
-
-
-	
+	{{form_end(form)}}
 
 
 	{% block javascripts %}
@@ -102,4 +100,3 @@ $('.js-datepicker2').datepicker({format: 'yyyy-mm-dd', startDate: "+1d", languag
 	{% endblock %}
 
 {% endblock %}
-

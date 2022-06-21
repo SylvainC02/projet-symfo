@@ -19,6 +19,7 @@ class ObjetType extends AbstractType
                 'label' => 'Nom : '
             ])
             ->add('image', FileType::class, [
+                'data_class' => null,
                 'label' => 'Image : '
             ])
             ->add('description', TextareaType::class, [

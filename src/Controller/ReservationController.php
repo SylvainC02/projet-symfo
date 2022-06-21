@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\ObjetRepository;
-use App\Repository\ReservationRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +18,11 @@ class ReservationController extends AbstractController
     {
         $reservation = new Reservation();
         $objet = $objetRepository->find($id);
+        $cat = $objet->getCategorie();
+        $points = $cat->getGivenPoints();
+
         $user = $this->getUser();
+
         $form = $this->createform(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
@@ -27,14 +30,23 @@ class ReservationController extends AbstractController
             $reservation->setObjet($objet);
             $reservation->setBorrower($user);
 
-            $objet->setIsAvailable(false);
+            $reservationDateDebut = $reservation->getStartingDate();
+            $reservationDateFin = $reservation->getEndingDate();
 
-            $entityManager = $managerRegistry->getManager();
-            $entityManager->persist($reservation);
-            $entityManager->flush();
+            if ($reservationDateDebut > $reservationDateFin) {
+                $this->addFlash('error', 'La date saisie n\'est pas bonne');
+                return $this->redirectToRoute('app_reservation', ['id' => $id]);
+            } else {
+                $objet->setIsAvailable(false);
+                $user->setTotalPoints($user->getTotalPoints() + $points);
 
-            $this->addFlash('success', 'Reservation faite !');
-            return $this->redirectToRoute('app_home');
+                $entityManager = $managerRegistry->getManager();
+                $entityManager->persist($reservation);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'Reservation faite !');
+                return $this->redirectToRoute('app_home');
+            }
         }
 
         return $this->renderForm('reservation/index.html.twig', [
