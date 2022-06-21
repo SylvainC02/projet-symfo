@@ -5,22 +5,25 @@ namespace App\Controller;
 use App\Entity\Objet;
 use App\Form\ObjetType;
 use App\Repository\ObjetRepository;
+use App\Repository\ReservationRepository;
+use App\Form\RegistrationFormType;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'app_user')]
     public function index(): Response
     {
-
-        return $this->render('user/index.html.twig', []);
+        $id = $this->getUser()->getId();
+        return $this->render('user/index.html.twig', ['numero' => $id]);
     }
 
     #[Route('/user/addObject/', name: 'app_add_item')]
@@ -61,6 +64,7 @@ class UserController extends AbstractController
             $this->addFlash('success', 'Votre objet a été enregistré !');
             return $this->redirectToRoute('app_user');
         }
+
 
         return $this->renderForm('user/addObject.html.twig', ["form" => $form]);
     }
@@ -132,5 +136,59 @@ class UserController extends AbstractController
             "form" => $form,
             "objet" => $item
         ]);
+    }
+    #[Route('/user/myReservations/', name: 'app_show_reservation')]
+    public function showMyres(ReservationRepository $reservationRepository): Response
+    {
+
+        $user = $this->getUser();
+        $id = $user->getId();
+        $reservations = $reservationRepository->findby([
+            "borrower" => $id
+        ]);
+
+        return $this->render('user/myReservations.html.twig', [
+            'reservations' => $reservations
+        ]);
+    }
+
+    #[Route('/user/myReservations/delete/{id}', name: 'app_delete_reservation')]
+    public function deleteMyRes(ManagerRegistry $managerRegistry, ReservationRepository $reservationRepository, $id): Response
+    {
+        $reservation = $reservationRepository->find($id);
+
+
+        $entityManager = $managerRegistry->getManager();
+        $entityManager->remove($reservation);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Votre Reservation a été supprimée !');
+        return $this->redirectToRoute('app_show_reservation');
+    }
+    #[Route('/user/mesInfos/', name: 'app_infos')]
+    public function mesInfos(): Response
+    {
+        $user = $this->getUser();
+        return $this->render('user/mesInfos.html.twig', ['user' => $user]);
+    }
+
+    #[Route('/user/mesInfos/edit/{id}', name: 'app_edit_infos')]
+    public function editInfos(Request $request, ManagerRegistry $managerRegistry, User $user)
+    {
+        $form = $this->createform(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $entityManager = $managerRegistry->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Vos infos ont bien été modifiée !');
+            return $this->redirectToRoute('app_infos');
+        }
+
+        return $this->renderForm('user/editInfos.html.twig', ["form" => $form, "user" => $user]);
     }
 }

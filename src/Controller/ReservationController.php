@@ -20,21 +20,20 @@ class ReservationController extends AbstractController
         $objet = $objetRepository->find($id);
         $cat = $objet->getCategorie();
         $points = $cat->getGivenPoints();
-
         $user = $this->getUser();
 
         $form = $this->createform(ReservationType::class, $reservation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $reservation->setObjet($objet);
             $reservation->setBorrower($user);
-
             $reservationDateDebut = $reservation->getStartingDate();
             $reservationDateFin = $reservation->getEndingDate();
 
             if ($reservationDateDebut > $reservationDateFin) {
-                $this->addFlash('error', 'La date saisie n\'est pas bonne');
+                $this->addFlash('error', 'Les dates saisis ne sont pas valides');
                 return $this->redirectToRoute('app_reservation', ['id' => $id]);
             } else {
                 $objet->setIsAvailable(false);

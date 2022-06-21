@@ -6,3 +6,19 @@
     height: 50px;
     width: 50px;
 }
+.MyLoc {
+    font-size: 5em;
+    margin-bottom: 2%;
+}
+
+.MyLocFooter {
+    font-size: 4em;
+    text-align: center;
+}
+
+.footer {
+    margin-top: 5%;
+    background-color: grey;
+    color: white;
+    text-align: center;
+}

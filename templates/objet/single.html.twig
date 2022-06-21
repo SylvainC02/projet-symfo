@@ -4,10 +4,10 @@
 
 	<div class="container">
 
-		<div class="row">
-
-			<div class="card" style="width: 18rem;">
-				<img src="{{asset('assets/images/')}}{{objet.image}}" class="card-img-top" alt="{{objet.image}}">
+		<div class="row ">
+			
+			<div class=" col-7 card p-0" style="width:600px ">
+				<img src="{{asset('assets/images/')}}{{objet.image}}" class="card-img-top"style="max-height:500px" alt="{{objet.image}}">
 
 				<div class="card-body">
 					<h5 class="card-title">{{ objet.name }}</h5>
@@ -21,9 +21,20 @@
 				</ul>
 
 			</div>
-			{% if app.user and objet.isAvailable %}
-				<a href="{{path('app_reservation', {id: objet.id})}}">Reserver</a>
-			{% endif %}
+			
+			<div class="col-4">
+				<div class="card"style="width:600px max-height:600px" >
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+					</div>
+					{% if app.user and objet.isAvailable %}
+						<a href="{{path('app_reservation', {id: objet.id})}}" class="card-link btn btn-warning w-100">Reserver</a>
+					{% endif %}
+				</div>
+			
+			</div>
 
 		</div>
 	</div>
