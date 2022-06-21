@@ -1,0 +1,23 @@
+{% extends 'user/index.html.twig' %}
+
+{% block accountTitle %}
+<h2 class="m-2 text-center">Mes infos</h2>
+{% endblock %}
+
+{% block utility %}
+
+<div class="container">
+	<div>
+		{{ form_start(form) }}
+            {{ form_row(form.pseudo) }}
+	        {{ form_row(form.email) }}
+            {{ form_row(form.adress) }}
+	        {{ form_row(form.plainPassword) }}
+            {{ form_row(form.agreeTerms) }}
+
+		<button type="submit" class="btn btn-primary">Valider</button>
+		{{ form_end(form) }}
+	</div>
+</div>
+
+{% endblock %}

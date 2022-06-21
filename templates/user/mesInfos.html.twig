@@ -1,0 +1,34 @@
+{% extends 'user/index.html.twig' %}
+
+{% block accountTitle %}
+<h2 class="m-2 text-center">Mes infos</h2>
+{% endblock %}
+
+{% block utility %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+<div class="container">
+	<div class="row">
+	Pseudo :<p class="list-group-item list-group-item-secondary">{{user.pseudo}}</p>
+	</div>
+	<div class="row">
+	Mail :<p class="list-group-item list-group-item-secondary">{{user.email}}</p>
+	</div>
+	<div class="row">
+	Adresse :<p class="list-group-item list-group-item-secondary">{{user.adress}}</p>
+	</div>
+
+	<div class="row">
+	Vos points :<p class="list-group-item list-group-item-secondary">{{user.totalPoints}}</p>
+	</div>
+	
+
+	</ul>
+	<a href="{{path('app_edit_infos', {'id' : user.id})}}" class="btn btn-primary">Editer</a>
+</div>
+
+{% endblock %}
